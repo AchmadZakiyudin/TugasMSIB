@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 5 Jquery</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h2>Letakkan kursor ke masing masing kotak gambar</h2>
+    <div id="div1">
+        gambar kucing
+    </div>
+    <div id="div2">
+        Hewan bebek
+    </div>
+    <div id="div3">
+        ayam
+    </div>
+    <audio id="catSound">
+        <source src="sound/cat.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="duckSound">
+        <source src="sound/duck.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="chickenSound">
+        <source src="sound/chicken.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            // Function to play cat sound
+            function playCatSound() {
+                $("#catSound")[0].play();
+            }
+
+            // Function to play duck sound
+            function playDuckSound() {
+                $("#duckSound")[0].play();
+            }
+
+            // Function to play chicken sound
+            function playChickenSound() {
+                $("#chickenSound")[0].play();
+            }
+          
+        $("document").ready(function(){
+            $("#div1").mouseover(function(){
+                $(this).css({
+                    background : "url('https://watermark.lovepik.com/photo/20211201/large/lovepik-cute-cat-picture_501320886.jpg')"
+                });
+                playCatSound();
+            });
+            $("div").mouseout(function(){
+                $(this).css({
+                    background : "green"
+                });
+            });
+            $("#div2").mouseover(function(){
+                $(this).css({
+                    background : "url('https://cdn1-production-images-kly.akamaized.net/U5SpXCTzsz9R5eb2IbAbnLvaicA=/800x450/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/1242699/original/010305600_1464028587-wallpaper_lucu.jpg')",
+                    "background-repeat" : "no-repeat"
+                });
+                playDuckSound();
+            });
+            $("#div3").mouseover(function(){
+                $(this).css({
+                    background : "url('https://awsimages.detik.net.id/community/media/visual/2020/08/17/kakek-didenda-karena-ayam-berkokok.jpeg?w=650&q=80')",
+                    "background-repeat" : "no-repeat"
+                });
+                playChickenSound();
+            });
+        });
+    });
+        
+    </script>
+</body>
+</html>
