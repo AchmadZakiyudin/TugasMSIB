@@ -1,0 +1,427 @@
+Microsoft Windows [Version 10.0.22631.3296]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Achmad Zakiyudin>cd \xampp\mysql\bin
+
+C:\xampp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use dbpos_sib6;
+Database changed
+
+(SOAL 3.1)
+MariaDB [dbpos_sib6]> SELECT * FROM produk WHERE harga_beli * stok;
++----+--------+-------------------+------------+------------+------+----------+------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
+| id | kode   | nama              | harga_beli | harga_jual | stok | min_stok | foto                   | deskripsi                                                                                                                                                                                                           | jenis_produk_id |
++----+--------+-------------------+------------+------------+------+----------+------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
+|  1 | TV01   | Televisi 21 inchs |    3500000 |   50500000 |    5 |        2 |                        | NULL                                                                                                                                                                                                                |               1 |
+|  2 | TV02   | Televisi 40 inch  |    5500000 |    7440000 |    4 |        2 | NULL                   | NULL
+
+                                                                             |               1 |
+|  3 | K001   | Kulkas 2 pintu    |    3500000 |    4680000 |    6 |        2 |                        | NULL
+
+                                                                             |               1 |
+|  4 | M001   | Meja Makan        |     500000 |     600000 |    4 |        3 | NULL                   | NULL
+
+                                                                             |               2 |
+|  5 | TK01   | Teh Kotak         |       3000 |       3500 |    6 |       10 | foto-5.png             | NULL
+
+                                                                             |               4 |
+|  6 | PC01   | PC Desktop HP     |    7000000 |    9984000 |    9 |        2 | NULL                   | NULL
+
+                                                                             |               5 |
+|  7 | TB01   | Teh Botol         |       2000 |       2500 |   53 |       10 | foto-7.jpg             | NULL
+
+                                                                             |               4 |
+|  8 | AC01   | Notebook Acer S   |    8000000 |   11232000 |    7 |        2 | NULL                   | NULL
+
+                                                                             |               5 |
+|  9 | LN01   | Notebook Lenovo   |    9000000 |   12480000 |    9 |        2 | NULL                   | NULL
+
+                                                                             |               5 |
+| 11 | L005   | Laptop Lenovo     |   13000000 |   16000000 |    5 |        2 |                        | NULL
+
+                                                                             |               1 |
+| 15 | L112   | Kopi              |      20000 |      30000 |   10 |       15 | foto-15.png            | Luwak White Coffee merupakan bubuk biji kopi luwak yang dikombinasikan dengan gurihnya krimer serta manisnya gula. Keharuman kopi serta rasa manisnya yang pas juga membuat popularitas Luwak White Coffee melejit. |               4 |
+| 16 | L113   | Teh Sosro 2       |      10000 |      15000 |   10 |       12 | .png                   | NULL
+
+                                                                             |               1 |
+| 18 | L0015  | Laptop Asus       |    3000000 |    5000000 |   10 |       20 | foto-65542ffa66604.jpg | NULL
+
+                                                                             |               1 |
+| 19 | TV0115 | Televisi 22 inc`  |    3500000 |   50500000 |    5 |        2 | NULL                   | NULL
+
+                                                                             |               1 |
+| 20 | TV0116 | Televisi 23 inc   |    3500000 |   50500000 |    5 |        2 | NULL                   | NULL
+
+                                                                             |               1 |
+| 21 | TV0117 | Televisi 24 inc   |    3500000 |   50500000 |    5 |        2 | NULL                   | NULL
+
+                                                                             |               1 |
+| 22 | TV0118 | Televisi 25 inc   |    3500000 |   50500000 |    5 |        2 | NULL                   | NULL
+
+                                                                             |               1 |
+| 24 | TV0120 | Televisi 27 inc   |    3500000 |   50500000 |    5 |        2 | NULL                   | NULL
+
+                                                                             |               1 |
+| 25 | TV0121 | Televisi 28 inc   |    3500000 |   50500000 |    5 |        2 | NULL                   | NULL
+
+                                                                             |               1 |
+| 26 | TV0122 | Televisi 29 inc   |    3500000 |   50500000 |    5 |        2 | NULL                   | NULL
+
+                                                                             |               1 |
+| 27 | THP001 | Teh Pucuk         |       4000 |       5000 |   10 |        2 | pucuk.jpg              | Teh pucuk adalah
+                                                                             |               4 |
+| 28 | THP002 | Teh Pucuk2        |       4000 |       5000 |   10 |        2 | pucuk.jpg              | Teh pucuk adalah
+                                                                             |               4 |
++----+--------+-------------------+------------+------------+------+----------+------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+-----------------+
+22 rows in set (0.070 sec)
+
+MariaDB [dbpos_sib6]> SELECT * FROM produk WHERE harga_beli * stok > 2000000;
++----+--------+-------------------+------------+------------+------+----------+------------------------+-----------+-----------------+
+| id | kode   | nama              | harga_beli | harga_jual | stok | min_stok | foto                   | deskripsi | jenis_produk_id |
++----+--------+-------------------+------------+------------+------+----------+------------------------+-----------+-----------------+
+|  1 | TV01   | Televisi 21 inchs |    3500000 |   50500000 |    5 |        2 |                        | NULL      |               1 |
+|  2 | TV02   | Televisi 40 inch  |    5500000 |    7440000 |    4 |        2 | NULL                   | NULL      |               1 |
+|  3 | K001   | Kulkas 2 pintu    |    3500000 |    4680000 |    6 |        2 |                        | NULL      |               1 |
+|  6 | PC01   | PC Desktop HP     |    7000000 |    9984000 |    9 |        2 | NULL                   | NULL      |               5 |
+|  8 | AC01   | Notebook Acer S   |    8000000 |   11232000 |    7 |        2 | NULL                   | NULL      |               5 |
+|  9 | LN01   | Notebook Lenovo   |    9000000 |   12480000 |    9 |        2 | NULL                   | NULL      |               5 |
+| 11 | L005   | Laptop Lenovo     |   13000000 |   16000000 |    5 |        2 |                        | NULL      |               1 |
+| 18 | L0015  | Laptop Asus       |    3000000 |    5000000 |   10 |       20 | foto-65542ffa66604.jpg | NULL      |               1 |
+| 19 | TV0115 | Televisi 22 inc`  |    3500000 |   50500000 |    5 |        2 | NULL                   | NULL      |               1 |
+| 20 | TV0116 | Televisi 23 inc   |    3500000 |   50500000 |    5 |        2 | NULL                   | NULL      |               1 |
+| 21 | TV0117 | Televisi 24 inc   |    3500000 |   50500000 |    5 |        2 | NULL                   | NULL      |               1 |
+| 22 | TV0118 | Televisi 25 inc   |    3500000 |   50500000 |    5 |        2 | NULL                   | NULL      |               1 |
+| 24 | TV0120 | Televisi 27 inc   |    3500000 |   50500000 |    5 |        2 | NULL                   | NULL      |               1 |
+| 25 | TV0121 | Televisi 28 inc   |    3500000 |   50500000 |    5 |        2 | NULL                   | NULL      |               1 |
+| 26 | TV0122 | Televisi 29 inc   |    3500000 |   50500000 |    5 |        2 | NULL                   | NULL      |               1 |
++----+--------+-------------------+------------+------------+------+----------+------------------------+-----------+-----------------+
+15 rows in set (0.008 sec)
+
+MariaDB [dbpos_sib6]> SELECT SUM(stok - min_stok) as selisih from produk;
++---------+
+| selisih |
++---------+
+|      91 |
++---------+
+1 row in set (0.004 sec)
+
+MariaDB [dbpos_sib6]> SELECT sum(stok) as total_asset from produk;
++-------------+
+| total_asset |
++-------------+
+|         193 |
++-------------+
+1 row in set (0.001 sec)
+
+MariaDB [dbpos_sib6]> SELECT * FROM pelanggan WHERE YEAR(tgl_lahir) BETWEEN 1980 AND 1990;
++----+------+---------------+----+-----------+------------+----------------------+----------+
+| id | kode | nama          | jk | tmp_lahir | tgl_lahir  | email                | kartu_id |
++----+------+---------------+----+-----------+------------+----------------------+----------+
+|  3 | C003 | Sekar Mirah   | P  | Kediri    | 1983-02-20 | mirah@yahoo.com      |        1 |
+|  4 | C004 | Swandaru Geni | L  | Kediri    | 1981-01-04 | swandaru@yahoo.com   |        4 |
+|  5 | C005 | Pradabashu    | L  | Pati      | 1985-04-02 | prada85@gmail.com    |        2 |
+|  6 | C006 | Gayatri Dwi   | P  | Jakarta   | 1987-11-28 | gaya87@gmail.com     |        1 |
+|  7 | C007 | Dewi Gyat     | P  | Jakarta   | 1988-12-01 | giyat@gmail.com      |        1 |
+|  8 | C008 | Andre Haru    | L  | Surabaya  | 1990-07-15 | andre.haru@gmail.com |        4 |
+| 10 | C010 | Cassanndra    | P  | Belfast   | 1990-11-20 | casa90@gmail.com     |        1 |
++----+------+---------------+----+-----------+------------+----------------------+----------+
+7 rows in set (0.016 sec)
+
+MariaDB [dbpos_sib6]> SELECT * FROM pelanggan WHERE YEAR(tgl_lahir)=1998;
+Empty set (0.001 sec)
+
+MariaDB [dbpos_sib6]> SELECT * FROM pelanggan WHERE MONTH(tgl_lahir)=08;
+Empty set (0.007 sec)
+
+MariaDB [dbpos_sib6]> SELECT nama, tmp_lahir, tgl_lahir, (YEAR(NOW())-YEAR(tgl_lahir)) AS umur FROM pelanggan;
++--------------------+------------+------------+------+
+| nama               | tmp_lahir  | tgl_lahir  | umur |
++--------------------+------------+------------+------+
+| Agung Sedayu Group | Solo       | 2010-01-01 |   14 |
+| Pandan Wangi       | Yogyakarta | 1950-01-01 |   74 |
+| Sekar Mirah        | Kediri     | 1983-02-20 |   41 |
+| Swandaru Geni      | Kediri     | 1981-01-04 |   43 |
+| Pradabashu         | Pati       | 1985-04-02 |   39 |
+| Gayatri Dwi        | Jakarta    | 1987-11-28 |   37 |
+| Dewi Gyat          | Jakarta    | 1988-12-01 |   36 |
+| Andre Haru         | Surabaya   | 1990-07-15 |   34 |
+| Ahmad Hasan        | Surabaya   | 1992-10-15 |   32 |
+| Cassanndra         | Belfast    | 1990-11-20 |   34 |
+| Andi Wijaya        | Tangerang  | 2023-11-07 |    1 |
+| Ira                | Jakarta    | 2023-11-07 |    1 |
++--------------------+------------+------------+------+
+12 rows in set (0.007 sec)
+
+(SOAL 3.2)
+MariaDB [dbpos_sib6]> SELECT COUNT(*) AS jumlah_pelanggan_1998 FROM pelanggan WHERE YEAR(tgl_lahir) = 1998;
++-----------------------+
+| jumlah_pelanggan_1998 |
++-----------------------+
+|                     0 |
++-----------------------+
+1 row in set (0.007 sec)
+
+MariaDB [dbpos_sib6]> SELECT COUNT(*) AS jumlah_pelanggan_perempuan_jakarta FROM pelanggan WHERE jk = 'P' AND tmp_lahir = 'Jakarta';
++------------------------------------+
+| jumlah_pelanggan_perempuan_jakarta |
++------------------------------------+
+|                                  3 |
++------------------------------------+
+1 row in set (0.001 sec)
+
+MariaDB [dbpos_sib6]> SELECT SUM(stok) AS total_stok_harga_dibawah_10rb FROM produk WHERE harga_jual < 10000;
++-------------------------------+
+| total_stok_harga_dibawah_10rb |
++-------------------------------+
+|                            79 |
++-------------------------------+
+1 row in set (0.001 sec)
+
+MariaDB [dbpos_sib6]> SELECT COUNT(*) AS jumlah_produk_kode_K FROM produk WHERE kode LIKE 'K%';
++----------------------+
+| jumlah_produk_kode_K |
++----------------------+
+|                    1 |
++----------------------+
+1 row in set (0.008 sec)
+
+MariaDB [dbpos_sib6]> SELECT AVG(harga_jual) AS rata_rata_harga_jual_produk_diatas_1jt FROM produk WHERE harga_jual > 1000000;
++----------------------------------------+
+| rata_rata_harga_jual_produk_diatas_1jt |
++----------------------------------------+
+|                     31387733.333333332 |
++----------------------------------------+
+1 row in set (0.001 sec)
+
+MariaDB [dbpos_sib6]> SELECT MAX(stok) AS jumlah_stok_terbesar FROM produk;
++----------------------+
+| jumlah_stok_terbesar |
++----------------------+
+|                   53 |
++----------------------+
+1 row in set (0.007 sec)
+
+MariaDB [dbpos_sib6]> SELECT COUNT(*) AS jumlah_produk_stok_kurang_dari_minimal FROM produk WHERE stok < min_stok;
++----------------------------------------+
+| jumlah_produk_stok_kurang_dari_minimal |
++----------------------------------------+
+|                                      4 |
++----------------------------------------+
+1 row in set (0.001 sec)
+
+MariaDB [dbpos_sib6]> SELECT SUM(stok * harga_beli) AS total_asset FROM produk;
++-------------+
+| total_asset |
++-------------+
+|   480504000 |
++-------------+
+1 row in set (0.001 sec)
+
+(SOAL 3.3)
+MariaDB [dbpos_sib6]> SELECT id, nama, stok, min_stok,
+    -> CASE
+    -> WHEN stok >= min_stok THEN 'STOK AMAN'
+    -> ELSE 'Silahkan Belanja'
+    -> END AS keterangan
+    -> FROM produk;
++----+-------------------+------+----------+------------------+
+| id | nama              | stok | min_stok | keterangan       |
++----+-------------------+------+----------+------------------+
+|  1 | Televisi 21 inchs |    5 |        2 | STOK AMAN        |
+|  2 | Televisi 40 inch  |    4 |        2 | STOK AMAN        |
+|  3 | Kulkas 2 pintu    |    6 |        2 | STOK AMAN        |
+|  4 | Meja Makan        |    4 |        3 | STOK AMAN        |
+|  5 | Teh Kotak         |    6 |       10 | Silahkan Belanja |
+|  6 | PC Desktop HP     |    9 |        2 | STOK AMAN        |
+|  7 | Teh Botol         |   53 |       10 | STOK AMAN        |
+|  8 | Notebook Acer S   |    7 |        2 | STOK AMAN        |
+|  9 | Notebook Lenovo   |    9 |        2 | STOK AMAN        |
+| 11 | Laptop Lenovo     |    5 |        2 | STOK AMAN        |
+| 15 | Kopi              |   10 |       15 | Silahkan Belanja |
+| 16 | Teh Sosro 2       |   10 |       12 | Silahkan Belanja |
+| 18 | Laptop Asus       |   10 |       20 | Silahkan Belanja |
+| 19 | Televisi 22 inc`  |    5 |        2 | STOK AMAN        |
+| 20 | Televisi 23 inc   |    5 |        2 | STOK AMAN        |
+| 21 | Televisi 24 inc   |    5 |        2 | STOK AMAN        |
+| 22 | Televisi 25 inc   |    5 |        2 | STOK AMAN        |
+| 24 | Televisi 27 inc   |    5 |        2 | STOK AMAN        |
+| 25 | Televisi 28 inc   |    5 |        2 | STOK AMAN        |
+| 26 | Televisi 29 inc   |    5 |        2 | STOK AMAN        |
+| 27 | Teh Pucuk         |   10 |        2 | STOK AMAN        |
+| 28 | Teh Pucuk2        |   10 |        2 | STOK AMAN        |
++----+-------------------+------+----------+------------------+
+22 rows in set (0.001 sec)
+
+MariaDB [dbpos_sib6]> SELECT id, nama,
+    -> CASE
+    -> WHEN (YEAR(NOW()) - YEAR(tgl_lahir)) < 17 THEN 'Muda'
+    -> WHEN (YEAR(NOW()) - YEAR(tgl_lahir)) BETWEEN 17 AND 55 THEN 'Dewasa'
+    -> ELSE 'Tua'
+    -> END AS kategori_umur,
+    -> (YEAR(NOW()) - YEAR(tgl_lahir)) AS umur
+    -> FROM pelanggan;
++----+--------------------+---------------+------+
+| id | nama               | kategori_umur | umur |
++----+--------------------+---------------+------+
+|  1 | Agung Sedayu Group | Muda          |   14 |
+|  2 | Pandan Wangi       | Tua           |   74 |
+|  3 | Sekar Mirah        | Dewasa        |   41 |
+|  4 | Swandaru Geni      | Dewasa        |   43 |
+|  5 | Pradabashu         | Dewasa        |   39 |
+|  6 | Gayatri Dwi        | Dewasa        |   37 |
+|  7 | Dewi Gyat          | Dewasa        |   36 |
+|  8 | Andre Haru         | Dewasa        |   34 |
+|  9 | Ahmad Hasan        | Dewasa        |   32 |
+| 10 | Cassanndra         | Dewasa        |   34 |
+| 11 | Andi Wijaya        | Muda          |    1 |
+| 12 | Ira                | Muda          |    1 |
++----+--------------------+---------------+------+
+12 rows in set (0.001 sec)
+
+MariaDB [dbpos_sib6]> SELECT id, kode, nama,
+    -> CASE
+    -> WHEN kode = 'TV01' THEN 'DVD Player'
+    -> WHEN kode = 'K001' THEN 'Rice Cooker'
+    -> ELSE 'Tidak Ada'
+    -> END AS bonus
+    -> FROM produk;
++----+--------+-------------------+-------------+
+| id | kode   | nama              | bonus       |
++----+--------+-------------------+-------------+
+|  1 | TV01   | Televisi 21 inchs | DVD Player  |
+|  2 | TV02   | Televisi 40 inch  | Tidak Ada   |
+|  3 | K001   | Kulkas 2 pintu    | Rice Cooker |
+|  4 | M001   | Meja Makan        | Tidak Ada   |
+|  5 | TK01   | Teh Kotak         | Tidak Ada   |
+|  6 | PC01   | PC Desktop HP     | Tidak Ada   |
+|  7 | TB01   | Teh Botol         | Tidak Ada   |
+|  8 | AC01   | Notebook Acer S   | Tidak Ada   |
+|  9 | LN01   | Notebook Lenovo   | Tidak Ada   |
+| 11 | L005   | Laptop Lenovo     | Tidak Ada   |
+| 15 | L112   | Kopi              | Tidak Ada   |
+| 16 | L113   | Teh Sosro 2       | Tidak Ada   |
+| 18 | L0015  | Laptop Asus       | Tidak Ada   |
+| 19 | TV0115 | Televisi 22 inc`  | Tidak Ada   |
+| 20 | TV0116 | Televisi 23 inc   | Tidak Ada   |
+| 21 | TV0117 | Televisi 24 inc   | Tidak Ada   |
+| 22 | TV0118 | Televisi 25 inc   | Tidak Ada   |
+| 24 | TV0120 | Televisi 27 inc   | Tidak Ada   |
+| 25 | TV0121 | Televisi 28 inc   | Tidak Ada   |
+| 26 | TV0122 | Televisi 29 inc   | Tidak Ada   |
+| 27 | THP001 | Teh Pucuk         | Tidak Ada   |
+| 28 | THP002 | Teh Pucuk2        | Tidak Ada   |
++----+--------+-------------------+-------------+
+22 rows in set (0.001 sec)
+
+(SOAL 3.4)
+MariaDB [dbpos_sib6]> SELECT tmp_lahir, COUNT(*) AS jumlah_pelanggan FROM pelanggan GROUP BY tmp_lahir;
++------------+------------------+
+| tmp_lahir  | jumlah_pelanggan |
++------------+------------------+
+| Belfast    |                1 |
+| Jakarta    |                3 |
+| Kediri     |                2 |
+| Pati       |                1 |
+| Solo       |                1 |
+| Surabaya   |                2 |
+| Tangerang  |                1 |
+| Yogyakarta |                1 |
++------------+------------------+
+8 rows in set (0.001 sec)
+
+MariaDB [dbpos_sib6]> SELECT id, kode, nama, tmp_lahir, tgl_lahir, email
+    -> FROM pelanggan
+    -> WHERE (YEAR(NOW()) - YEAR(tgl_lahir)) <
+    -> (SELECT AVG(YEAR(NOW()) - YEAR(tgl_lahir)) FROM pelanggan);
++----+-------+--------------------+-----------+------------+------------------+
+| id | kode  | nama               | tmp_lahir | tgl_lahir  | email            |
++----+-------+--------------------+-----------+------------+------------------+
+|  1 | C001  | Agung Sedayu Group | Solo      | 2010-01-01 | sedayu@gmail.com |
+|  9 | C009  | Ahmad Hasan        | Surabaya  | 1992-10-15 | ahasan@gmail.com |
+| 11 | K0010 | Andi Wijaya        | Tangerang | 2023-11-07 | andi@gmail.com   |
+| 12 | K0011 | Ira                | Jakarta   | 2023-11-07 | ira@gmail.com    |
++----+-------+--------------------+-----------+------------+------------------+
+4 rows in set (0.001 sec)
+
+MariaDB [dbpos_sib6]> SELECT id, nama, tgl_lahir
+    -> FROM pelanggan
+    -> WHERE (YEAR (NOW()) - YEAR(tgl_lahir)) <
+    -> (SELECT AVG(YEAR (NOW()) - YEAR(tgl_lahir)) FROM pelanggan);
++----+--------------------+------------+
+| id | nama               | tgl_lahir  |
++----+--------------------+------------+
+|  1 | Agung Sedayu Group | 2010-01-01 |
+|  9 | Ahmad Hasan        | 1992-10-15 |
+| 11 | Andi Wijaya        | 2023-11-07 |
+| 12 | Ira                | 2023-11-07 |
++----+--------------------+------------+
+4 rows in set (0.002 sec)
+
+MariaDB [dbpos_sib6]> SELECT id, nama, harga_jual
+    -> FROM produk
+    -> WHERE harga_jual > (SELECT AVG(harga_jual) FROM produk);
++----+-------------------+------------+
+| id | nama              | harga_jual |
++----+-------------------+------------+
+|  1 | Televisi 21 inchs |   50500000 |
+| 19 | Televisi 22 inc`  |   50500000 |
+| 20 | Televisi 23 inc   |   50500000 |
+| 21 | Televisi 24 inc   |   50500000 |
+| 22 | Televisi 25 inc   |   50500000 |
+| 24 | Televisi 27 inc   |   50500000 |
+| 25 | Televisi 28 inc   |   50500000 |
+| 26 | Televisi 29 inc   |   50500000 |
++----+-------------------+------------+
+8 rows in set (0.001 sec)
+
+MariaDB [dbpos_sib6]> SELECT pelanggan.id, pelanggan.kode, pelanggan.nama, pelanggan.tmp_lahir, pelanggan.tgl_lahir, pelanggan.email, kartu.nama AS jenis_kartu, kartu.iuran
+    -> FROM pelanggan
+    -> JOIN kartu ON pelanggan.kartu_id = kartu.id
+    -> WHERE kartu.iuran > 90000;
++----+-------+--------------------+------------+------------+-------------------+---------------+--------+
+| id | kode  | nama               | tmp_lahir  | tgl_lahir  | email             | jenis_kartu   | iuran  |
++----+-------+--------------------+------------+------------+-------------------+---------------+--------+
+|  1 | C001  | Agung Sedayu Group | Solo       | 2010-01-01 | sedayu@gmail.com  | Gold Utama    | 100000 |
+|  2 | C002  | Pandan Wangi       | Yogyakarta | 1950-01-01 | wangi@gmail.com   | Platinum Jaya | 150000 |
+|  3 | C003  | Sekar Mirah        | Kediri     | 1983-02-20 | mirah@yahoo.com   | Gold Utama    | 100000 |
+|  5 | C005  | Pradabashu         | Pati       | 1985-04-02 | prada85@gmail.com | Platinum Jaya | 150000 |
+|  6 | C006  | Gayatri Dwi        | Jakarta    | 1987-11-28 | gaya87@gmail.com  | Gold Utama    | 100000 |
+|  7 | C007  | Dewi Gyat          | Jakarta    | 1988-12-01 | giyat@gmail.com   | Gold Utama    | 100000 |
+| 10 | C010  | Cassanndra         | Belfast    | 1990-11-20 | casa90@gmail.com  | Gold Utama    | 100000 |
+| 11 | K0010 | Andi Wijaya        | Tangerang  | 2023-11-07 | andi@gmail.com    | Platinum Jaya | 150000 |
++----+-------+--------------------+------------+------------+-------------------+---------------+--------+
+8 rows in set (0.009 sec)
+
+MariaDB [dbpos_sib6]> SELECT COUNT(*) AS jumlah_produk, AVG(harga_jual) AS rata_rata_harga
+    -> FROM produk
+    -> WHERE harga_jual < (SELECT AVG(harga_jual) FROM produk);
++---------------+-------------------+
+| jumlah_produk | rata_rata_harga   |
++---------------+-------------------+
+|            14 | 4819785.714285715 |
++---------------+-------------------+
+1 row in set (0.001 sec)
+
+MariaDB [dbpos_sib6]> SELECT id, nama, kartu_id
+    -> FROM pelanggan
+    -> WHERE kartu_id > 3;
++----+---------------+----------+
+| id | nama          | kartu_id |
++----+---------------+----------+
+|  4 | Swandaru Geni |        4 |
+|  8 | Andre Haru    |        4 |
+|  9 | Ahmad Hasan   |        4 |
+| 12 | Ira           |        4 |
++----+---------------+----------+
+4 rows in set (0.001 sec)
+
+MariaDB [dbpos_sib6]>
