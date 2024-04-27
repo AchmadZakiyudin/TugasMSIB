@@ -17,7 +17,7 @@ MariaDB [(none)]> use dbpos_sib6;
 Database changed
 
 (SOAL 4.1)
-MariaDB [dbpos_sib6]> SELECT pesanan.id, pesanan.tanggal, pesanan. total, pelanggan.kode, pelanggan.nama,
+1. MariaDB [dbpos_sib6]> SELECT pesanan.id, pesanan.tanggal, pesanan. total, pelanggan.kode, pelanggan.nama,
     -> kartu.nama as nama_kartu, kartu.diskon
     -> FROM pesanan INNER JOIN pelanggan ON pesanan.pelanggan_id = pelanggan.id
     -> INNER JOIN kartu ON pelanggan.kartu_id = kartu.id;
@@ -38,7 +38,7 @@ MariaDB [dbpos_sib6]> SELECT pesanan.id, pesanan.tanggal, pesanan. total, pelang
 +----+------------+---------+------+--------------------+---------------+--------+
 11 rows in set (0.075 sec)
 
-MariaDB [dbpos_sib6]> SELECT pembelian.id, pembelian.tanggal, pembelian.nomor, pembelian.jumlah, pembelian.harga,
+2. MariaDB [dbpos_sib6]> SELECT pembelian.id, pembelian.tanggal, pembelian.nomor, pembelian.jumlah, pembelian.harga,
     -> produk.nama, vendor.nama, vendor.kontak FROM pembelian INNER JOIN produk
     -> ON pembelian.produk_id = produk.id
     -> INNER JOIN vendor ON pembelian.vendor_id = vendor.id;
@@ -53,7 +53,7 @@ MariaDB [dbpos_sib6]> SELECT pembelian.id, pembelian.tanggal, pembelian.nomor, p
 +----+------------+-------+--------+---------+-------------------+----------------------+-----------------+
 5 rows in set (0.013 sec)
 
-MariaDB [dbpos_sib6]> SELECT
+3. MariaDB [dbpos_sib6]> SELECT
     -> pesanan.id AS id,
     -> pesanan.tanggal AS tanggal,
     -> pesanan.total AS total,
@@ -81,7 +81,7 @@ MariaDB [dbpos_sib6]> SELECT
 7 rows in set (0.001 sec)
 
 (SOAL 4.2)
-MariaDB [dbpos_sib6]> select * FROM pesanan_pelanggan_kartu;
+1. MariaDB [dbpos_sib6]> select * FROM pesanan_pelanggan_kartu;
 +----+------------+---------+------+--------------------+---------------+--------+
 | id | tanggal    | total   | kode | nama               | nama_kartu    | diskon |
 +----+------------+---------+------+--------------------+---------------+--------+
@@ -99,7 +99,7 @@ MariaDB [dbpos_sib6]> select * FROM pesanan_pelanggan_kartu;
 +----+------------+---------+------+--------------------+---------------+--------+
 11 rows in set (0.001 sec)
 
-MariaDB [dbpos_sib6]> SELECT * FROM pembelian_produk_vendor;
+2. MariaDB [dbpos_sib6]> SELECT * FROM pembelian_produk_vendor;
 +----+------------+-------+--------+---------+-------------------+----------------------+-----------------+
 | id | tanggal    | nomor | jumlah | harga   | nama              | nama_vendor          | kontak          |
 +----+------------+-------+--------+---------+-------------------+----------------------+-----------------+
@@ -111,7 +111,7 @@ MariaDB [dbpos_sib6]> SELECT * FROM pembelian_produk_vendor;
 +----+------------+-------+--------+---------+-------------------+----------------------+-----------------+
 5 rows in set (0.008 sec)
 
-MariaDB [dbpos_sib6]> select * FROM pembelian_produk_vendor;
+3. MariaDB [dbpos_sib6]> select * FROM pembelian_produk_vendor;
 +----+------------+-------+--------+---------+-------------------+----------------------+-----------------+
 | id | tanggal    | nomor | jumlah | harga   | nama              | nama_vendor          | kontak          |
 +----+------------+-------+--------+---------+-------------------+----------------------+-----------------+
@@ -123,14 +123,15 @@ MariaDB [dbpos_sib6]> select * FROM pembelian_produk_vendor;
 +----+------------+-------+--------+---------+-------------------+----------------------+-----------------+
 5 rows in set (0.001 sec)
 
-MariaDB [dbpos_sib6]> start transaction;
+(SOAL 4.3)
+1. MariaDB [dbpos_sib6]> start transaction;
 Query OK, 0 rows affected (0.000 sec)
 
 MariaDB [dbpos_sib6]> INSERT INTO produk (id, kode, nama, harga_beli, harga_jual, stok, min_stok, foto, deskripsi, jenis_produk_id)
-    ->     VALUES
-    ->     (29, 'KA', 'Kipas Angin', 1000000, 1500000, 10, 4, NULL, 'Pendingin Ruangan', 1),
-    ->     (30, 'AC', 'AC', 2000000, 2800000, 15, 5, NULL, 'Pendingin Ruangan', 1),
-    ->     (31, 'MC', 'Mesin Cuci', 3000000, 3500000, 20, 7, NULL, 'Penyuci Pakaian', 1);
+    -> VALUES
+    -> (29, 'KA', 'Kipas Angin', 1000000, 1500000, 10, 4, NULL, 'Pendingin Ruangan', 1),
+    -> (30, 'AC', 'AC', 2000000, 2800000, 15, 5, NULL, 'Pendingin Ruangan', 1),
+    -> (31, 'MC', 'Mesin Cuci', 3000000, 3500000, 20, 7, NULL, 'Penyuci Pakaian', 1);
 Query OK, 3 rows affected (0.012 sec)
 Records: 3  Duplicates: 0  Warnings: 0
 
