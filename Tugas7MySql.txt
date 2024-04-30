@@ -1,0 +1,210 @@
+Microsoft Windows [Version 10.0.22631.3447]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Achmad Zakiyudin>cd /xampp/mysql/bin
+
+C:\xampp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 16
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use dbpos_sib6
+Database changed
+
+(SOAL 6.1)
+1. MariaDB [dbpos_sib6]> DELIMITER $$
+MariaDB [dbpos_sib6]> CREATE PROCEDURE pro_naikan_harga1(
+    -> IN jenis_produk INT,
+    -> IN persentasi_kenaikan INT)
+    -> BEGIN
+    -> UPDATE produk SET harga_jual = harga_jual + (harga_jual *
+    -> persentasi_kenaikan / 100)
+    -> WHERE jenis_produk_id = jenis_produk;
+    -> END $$
+Query OK, 0 rows affected (0.003 sec)
+
+MariaDB [dbpos_sib6]> DELIMITER ;
+MariaDB [dbpos_sib6]> SELECT nama, harga_jual, jenis_produk_id F
+ROM produk;
++-------------------+------------+-----------------+
+| nama              | harga_jual | jenis_produk_id |
++-------------------+------------+-----------------+
+| Televisi 21 inchs |   50500000 |               1 |
+| Televisi 40 inch  |    7440000 |               1 |
+| Kulkas 2 pintu    |    4680000 |               1 |
+| Meja Makan        |     600000 |               2 |
+| Teh Kotak         |       3850 |               4 |
+| PC Desktop HP     |    9984000 |               5 |
+| Teh Botol         |       2750 |               4 |
+| Notebook Acer S   |   11232000 |               5 |
+| Notebook Lenovo   |   12480000 |               5 |
+| Laptop Lenovo     |   16000000 |               1 |
+| Kopi              |      33000 |               4 |
+| Teh Sosro 2       |      15000 |               1 |
+| Laptop Asus       |    5000000 |               1 |
+| Televisi 22 inc`  |   50500000 |               1 |
+| Televisi 23 inc   |   50500000 |               1 |
+| Televisi 24 inc   |   50500000 |               1 |
+| Televisi 25 inc   |   50500000 |               1 |
+| Televisi 27 inc   |   50500000 |               1 |
+| Televisi 28 inc   |   50500000 |               1 |
+| Televisi 29 inc   |   50500000 |               1 |
+| Teh Pucuk         |       5500 |               4 |
+| Teh Pucuk2        |       5500 |               4 |
+| Kipas Angin       |    1500000 |               1 |
+| AC                |    2800000 |               1 |
+| Mesin Cuci        |    3500000 |               1 |
++-------------------+------------+-----------------+
+25 rows in set (0.071 sec)
+
+MariaDB [dbpos_sib6]> CALL pro_naikan_harga1(4,10);
+Query OK, 5 rows affected (0.010 sec)
+
+MariaDB [dbpos_sib6]> SELECT nama, harga_jual, jenis_produk_id FROM produk;
++-------------------+------------+-----------------+
+| nama              | harga_jual | jenis_produk_id |
++-------------------+------------+-----------------+
+| Televisi 21 inchs |   50500000 |               1 |
+| Televisi 40 inch  |    7440000 |               1 |
+| Kulkas 2 pintu    |    4680000 |               1 |
+| Meja Makan        |     600000 |               2 |
+| Teh Kotak         |       4235 |               4 |
+| PC Desktop HP     |    9984000 |               5 |
+| Teh Botol         |       3025 |               4 |
+| Notebook Acer S   |   11232000 |               5 |
+| Notebook Lenovo   |   12480000 |               5 |
+| Laptop Lenovo     |   16000000 |               1 |
+| Kopi              |      36300 |               4 |
+| Teh Sosro 2       |      15000 |               1 |
+| Laptop Asus       |    5000000 |               1 |
+| Televisi 22 inc`  |   50500000 |               1 |
+| Televisi 23 inc   |   50500000 |               1 |
+| Televisi 24 inc   |   50500000 |               1 |
+| Televisi 25 inc   |   50500000 |               1 |
+| Televisi 27 inc   |   50500000 |               1 |
+| Televisi 28 inc   |   50500000 |               1 |
+| Televisi 29 inc   |   50500000 |               1 |
+| Teh Pucuk         |       6050 |               4 |
+| Teh Pucuk2        |       6050 |               4 |
+| Kipas Angin       |    1500000 |               1 |
+| AC                |    2800000 |               1 |
+| Mesin Cuci        |    3500000 |               1 |
++-------------------+------------+-----------------+
+25 rows in set (0.001 sec)
+
+2. MariaDB [dbpos_sib6]> DELIMITER $$
+CREATE FUNCTION umur1(tgl_lahir DATE)
+    -> RETURNS INT
+    -> BEGIN
+    -> DECLARE umur INT;
+    -> SET umur = YEAR(CURDATE()) - YEAR(tgl_lahir);
+    -> RETURN umur;
+    -> END $$
+Query OK, 0 rows affected (0.006 sec)
+SELECT nama, umur1(tgl_lahir) AS umur FROM pelanggan;
+    -> $$
++--------------------+------+
+| nama               | umur |
++--------------------+------+
+| Agung Sedayu Group |   14 |
+| Pandan Wangi       |   74 |
+| Sekar Mirah        |   41 |
+| Swandaru Geni      |   43 |
+| Pradabashu         |   39 |
+| Gayatri Dwi        |   37 |
+| Dewi Gyat          |   36 |
+| Andre Haru         |   34 |
+| Ahmad Hasan        |   32 |
+| Cassanndra         |   34 |
+| Andi Wijaya        |    1 |
+| Ira                |    1 |
++--------------------+------+
+12 rows in set (0.001 sec)
+
+3. MariaDB [dbpos_sib6]> DELIMITER $$
+MariaDB [dbpos_sib6]> CREATE FUNCTION kategori_harga(harga DOUBLE)
+    -> RETURNS VARCHAR(25)
+    -> BEGIN
+    -> DECLARE kategori VARCHAR(25);
+    -> IF harga <= 500000 THEN
+    -> SET kategori = 'murah';
+    -> ELSEIF harga <= 3000000 THEN
+    -> SET kategori = 'sedang';
+    -> ELSEIF harga <= 10000000 THEN
+    -> SET kategori = 'mahal';
+    -> ELSE
+    -> SET kategori = 'sangat mahal';
+    -> END IF;
+    -> RETURN kategori;
+    -> END $$
+Query OK, 0 rows affected (0.011 sec)
+
+MariaDB [dbpos_sib6]> DELIMITER ;
+MariaDB [dbpos_sib6]> SELECT kategori_harga(2500000) AS kategori;
++----------+
+| kategori |
++----------+
+| sedang   |
++----------+
+1 row in set (0.008 sec)
+
+(SOAL 6.2)
+1. MariaDB [dbpos_sib6]> DELIMITER $$
+MariaDB [dbpos_sib6]> CREATE TRIGGER after_pesanan_insert
+    -> AFTER INSERT ON pesanan
+    -> FOR EACH ROW
+    -> BEGIN
+    -> INSERT INTO pembayaran (pesanan_id, status_pembayaran)
+    -> VALUES (NEW.id, 'Belum Lunas');
+    -> END $$
+Query OK, 0 rows affected (0.017 sec)
+
+MariaDB [dbpos_sib6]> CREATE TRIGGER after_pembayaran_insert
+    -> AFTER INSERT ON pembayaran
+    -> FOR EACH ROW
+    -> BEGIN
+    -> DECLARE total_pembayaran DECIMAL(10, 2);
+    -> DECLARE total_pesanan DECIMAL(10, 2);
+    -> SELECT SUM(jumlah) INTO total_pembayaran FROM pembayaran WHERE pesanan_id = NEW.pesanan_id;
+    -> SELECT total_harga INTO total_pesanan FROM pesanan WHERE id = NEW.pesanan_id;
+    -> IF total_pembayaran >= total_pesanan THEN
+    -> UPDATE pembayaran SET status_pembayaran = 'Lunas' WHERE pesanan_id = NEW.pesanan_id;
+    -> END IF;
+    -> END $$
+Query OK, 0 rows affected (0.021 sec)
+
+MariaDB [dbpos_sib6]> DELIMITER ;
+
+2. MariaDB [dbpos_sib6]> DELIMITER $$
+MariaDB [dbpos_sib6]> CREATE PROCEDURE kurangi_stok(
+    -> IN produk_id INT,
+    -> IN jumlah_pesanan INT)
+    -> BEGIN
+    -> DECLARE stok_produk INT;
+    -> SELECT stok INTO stok_produk FROM produk WHERE id = produk_id;
+    -> SET stok_produk = stok_produk - jumlah_pesanan;
+    -> IF stok_produk < 0 THEN
+    -> SIGNAL SQLSTATE '45000'
+    -> SET MESSAGE_TEXT = 'stok produk tidak cukup';
+    -> END IF;
+    -> UPDATE produk SET stok = stok_produk WHERE id = produk_id;
+    -> END $$
+Query OK, 0 rows affected (0.012 sec)
+
+MariaDB [dbpos_sib6]> DELIMITER ;
+
+3. MariaDB [dbpos_sib6]> DELIMITER $$
+MariaDB [dbpos_sib6]> CREATE TRIGGER kurangi_stok AFTER INSERT
+    -> on pesanan_items
+    -> FOR EACH ROW
+    -> BEGIN
+    -> CALL kurangi_stok(NEW.produk_id, NEW.qty);
+    -> END $$
+Query OK, 0 rows affected (0.017 sec)
+
+MariaDB [dbpos_sib6]> DELIMITER ;
